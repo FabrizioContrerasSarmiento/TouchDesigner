@@ -259,6 +259,53 @@ const TransitionManager = forwardRef(function TransitionManager(
             break;
           }
 
+          // 7. SPHERE / RADIAL EXPANSION
+          case "sphere":
+          case "radial": {
+            ctx.fillStyle = `rgba(0, 0, 0, ${envelope * 0.88})`;
+            ctx.fillRect(0, 0, width, height);
+
+            if (envelope > 0.02) {
+              const cx = width * 0.5;
+              const cy = height * 0.5;
+              const maxR = Math.hypot(width, height) * 0.55;
+              const currentR = envelope * maxR;
+
+              // Resplandor esférico central
+              const radGrad = ctx.createRadialGradient(cx, cy, currentR * 0.2, cx, cy, currentR);
+              radGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
+              radGrad.addColorStop(0.7, `${accentColor}33`);
+              radGrad.addColorStop(1, `${accentColor}88`);
+
+              ctx.fillStyle = radGrad;
+              ctx.beginPath();
+              ctx.arc(cx, cy, currentR, 0, Math.PI * 2);
+              ctx.fill();
+
+              // Anillo exterior nítido
+              ctx.strokeStyle = "#ffffff";
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.arc(cx, cy, currentR, 0, Math.PI * 2);
+              ctx.stroke();
+
+              // Anillos orbitales concéntricos
+              for (let i = 1; i <= 3; i++) {
+                const subR = currentR * (1 - i * 0.22);
+                if (subR > 0) {
+                  ctx.strokeStyle = accentColor;
+                  ctx.lineWidth = 1;
+                  ctx.globalAlpha = envelope * (0.8 - i * 0.2);
+                  ctx.beginPath();
+                  ctx.arc(cx, cy, subR, 0, Math.PI * 2);
+                  ctx.stroke();
+                }
+              }
+              ctx.globalAlpha = 1;
+            }
+            break;
+          }
+
           default:
             ctx.fillStyle = `rgba(0, 0, 0, ${envelope})`;
             ctx.fillRect(0, 0, width, height);

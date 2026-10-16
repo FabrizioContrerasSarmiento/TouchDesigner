@@ -288,6 +288,71 @@ export const ARTWORKS = [
     transitionDuration: 1.2,
     accentColor: "#06b6d4",
     description: "Ondas armónicas y dispersión de partículas moduladas por frecuencias de audio graves."
+  },
+  {
+    id: 6,
+    number: "06",
+    title: "ESFERA",
+    video: "/videos/Esfera.mp4",
+    file: "/videos/Esfera.mp4",
+    audio: "/audio/esfera-musica.mp3",
+    nativeWidth: 1000,
+    nativeHeight: 1000,
+    technique: "GENERATIVE AUDIOVISUAL",
+    software: "TOUCHDESIGNER",
+    year: "2026",
+    layout: "multi",
+    instanceCount: 4,
+    instances: [
+      {
+        id: "main",
+        isMain: true,
+        x: "0vw",
+        y: "0vh",
+        scale: 1.0,
+        rotation: 0,
+        opacity: 1.0,
+        zIndex: 10,
+        fit: "contain"
+      },
+      {
+        id: "orbit-left",
+        isMain: false,
+        x: "-29vw",
+        y: "-3vh",
+        scale: 0.82,
+        rotation: -4.0,
+        opacity: 0.68,
+        zIndex: 4,
+        fit: "contain"
+      },
+      {
+        id: "orbit-right",
+        isMain: false,
+        x: "29vw",
+        y: "3vh",
+        scale: 0.82,
+        rotation: 4.0,
+        opacity: 0.68,
+        zIndex: 4,
+        fit: "contain"
+      },
+      {
+        id: "sphere-aura",
+        isMain: false,
+        x: "0vw",
+        y: "0vh",
+        scale: 1.45,
+        rotation: 0,
+        opacity: 0.20,
+        zIndex: 1,
+        fit: "cover"
+      }
+    ],
+    transition: "sphere",
+    transitionDuration: 1.2,
+    accentColor: "#f59e0b",
+    description: "Morfología esférica y oscilaciones armónicas tridimensionales en espacio topológico continuo."
   }
 ];
 
@@ -310,7 +375,8 @@ export const TRANSITION_TYPES = [
   "displacement",
   "particles",
   "digital-noise",
-  "distortion"
+  "distortion",
+  "sphere"
 ];
 
 /**
