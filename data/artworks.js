@@ -85,8 +85,8 @@ export const ARTWORKS = [
     technique: "GENERATIVE AUDIOVISUAL",
     software: "TOUCHDESIGNER",
     year: "2026",
-    layout: "single",
-    instanceCount: 1,
+    layout: "multi",
+    instanceCount: 4,
     instances: [
       {
         id: "main",
@@ -98,6 +98,39 @@ export const ARTWORKS = [
         opacity: 1.0,
         zIndex: 10,
         fit: "contain"
+      },
+      {
+        id: "square-left",
+        isMain: false,
+        x: "-26vw",
+        y: "-7vh",
+        scale: 0.80,
+        rotation: -2.2,
+        opacity: 0.65,
+        zIndex: 3,
+        fit: "contain"
+      },
+      {
+        id: "square-right",
+        isMain: false,
+        x: "26vw",
+        y: "7vh",
+        scale: 0.80,
+        rotation: 2.2,
+        opacity: 0.65,
+        zIndex: 3,
+        fit: "contain"
+      },
+      {
+        id: "square-aura",
+        isMain: false,
+        x: "0vw",
+        y: "0vh",
+        scale: 1.38,
+        rotation: 0,
+        opacity: 0.18,
+        zIndex: 1,
+        fit: "cover"
       }
     ],
     transition: "displacement",
