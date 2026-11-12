@@ -145,14 +145,15 @@ const VideoComposition = forwardRef(function VideoComposition(
     if (masterVideoRef.current) masterVideoRef.current.pause();
   }, []);
 
-  // Sincronizar cambios en isPlaying
+  // Sincronizar el estado de reproducción y reanudar cuando el deck activo
+  // recibe una fuente nueva durante una transición.
   useEffect(() => {
     if (isPlaying) {
       safePlayAll();
     } else {
       pauseAll();
     }
-  }, [isPlaying, safePlayAll, pauseAll]);
+  }, [isPlaying, videoSrc, safePlayAll, pauseAll]);
 
   // Manejo de eventos del master
   const handleMasterPlay = () => {
